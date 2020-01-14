@@ -1,8 +1,8 @@
 pipeline {
   agent any
   stages {
-      ', 
-    stage('Extract credentials') {
+    
+   stage('Extract credentials') {
       steps {
         script {
           withCredentials([
