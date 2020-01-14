@@ -27,6 +27,7 @@ pipeline {
       sh 'echo "Or in a shell $VAR"' // Careful with the semantics of ' and " here
 
 
+}
         }
 
   }
