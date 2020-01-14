@@ -19,6 +19,8 @@ withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'DOC
       sh 'echo "DOCKER_REGISTRY: $DOCKER_REGISTRY"'
 }
 
+      echo sh(returnStdout: true, script: 'env')
+
 
       }
         }
