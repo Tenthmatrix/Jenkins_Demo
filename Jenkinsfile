@@ -25,7 +25,7 @@ pipeline {
           println "Directly in Groovy:" + VAR
       }
       sh 'echo "Or in a shell $VAR"' // Careful with the semantics of ' and " here
-      sh 'echo "Or in a shell ${VAR_S3_ENDPOINT}"' // Careful with the semantics of ' and " here
+      sh 'echo "S3_ENDPOINT: ${VAR_S3_ENDPOINT}"' // Careful with the semantics of ' and " here
 
 
 }
