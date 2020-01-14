@@ -12,18 +12,22 @@ pipeline {
 
 
     stage('Extract credentials') {
+           environment {
+      VAR = credentials("edge_installer_properties")
+   }
+
       steps {
-        script {
-          withCredentials([
-            dockerCert(
-              credentialsId: 'edge_installer_properties',
-              variable: 'EGDE_PROPERTIES_PATH')
-          ]) {
-            print 'EGDE_PROPERTIES_PATH=' + EGDE_PROPERTIES_PATH
-          }
-        }
+       
+      // Using the VAR environment variable (see below)
+      echo "In any Jenkins command: $VAR"
+
+      script {
+          println "Directly in Groovy:" + VAR
       }
-    }
+      sh 'echo "Or in a shell $VAR"' // Careful with the semantics of ' and " here
+
+
+        }
 
   }
 }
