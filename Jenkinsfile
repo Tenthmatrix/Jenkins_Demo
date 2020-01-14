@@ -1,24 +1,28 @@
 pipeline {
-    agent any 
+  agent any
+  stages {
+      ', 
+    stage('Extract credentials') {
+      steps {
+        script {
+          withCredentials([
+            dockerCert(
+              credentialsId: 'edge_installer_properties',
+              variable: 'EGDE_PROPERTIES_PATH')
+          ]) {
+            print 'EGDE_PROPERTIES_PATH=' + EGDE_PROPERTIES_PATH
+          }
+        }
+      }
+    }
 
-script{
-   withCredentials([
-      string(
-         credentialsId: 'edge_installer_properties',
-         variable: 'BITBUCKET_PRIVATE_KEY')
-      ]) {
-      sh """#!/bin/bash
-         echo 'BITBUCKET_PRIVATE_KEY ${BITBUCKET_PRIVATE_KEY}' 
-         """
+    stage('list credentials ids') {
+      steps {
+        script {
+          sh 'cat $JENKINS_HOME/credentials.xml | grep "<id>"'
+        }
+      }
+    }
+
   }
 }
-
-    stages {
-        stage('Stage 1') {
-            steps {
-                echo 'Hello world!' 
-            }
-        }
-    }
-}
-
