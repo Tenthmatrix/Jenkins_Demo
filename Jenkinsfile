@@ -12,24 +12,24 @@ pipeline {
 
 
     stage('Extract credentials') {
-           environment {
-      VAR = credentials("edge_installer_properties")
-   }
 
       steps {
        
       // Using the VAR environment variable (see below)
       echo "In any Jenkins command: $VAR"
+    environment {
+        VAR     = credentials('edge_installer_properties')
+    }
 
       script {
-          println "Directly in Groovy:" + VAR
+          println "Directly in Groovy:" + VAR_CHARTMUSEUM_USER
       }
-      sh 'echo "Or in a shell $VAR"' // Careful with the semantics of ' and " here
-      sh 'echo "S3_ENDPOINT: ${env.S3_ENDPOINT}"' // S3_ENDPOINT should be outputted in console
+      
+      sh 'echo "Or in a shell $VAR_CHARTMUSEUM_USER"'
 
-
-}
+      }
         }
 
   }
 }
+
