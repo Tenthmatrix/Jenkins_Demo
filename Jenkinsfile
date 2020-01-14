@@ -17,6 +17,7 @@ pipeline {
        
 withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'DOCKER_REGISTRY')]) {
       sh 'echo "DOCKER_REGISTRY: $DOCKER_REGISTRY"'
+      sh 'export "MY_DOCKER_REGISTRY=$DOCKER_REGISTRY"'
 }
 
       echo sh(returnStdout: true, script: 'env')
