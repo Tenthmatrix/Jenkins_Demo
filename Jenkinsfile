@@ -16,15 +16,16 @@ pipeline {
       steps {
        
       // Using the VAR environment variable (see below)
-      echo "In any Jenkins command: $VAR"
     environment {
         VAR     = credentials('edge_installer_properties')
     }
 
+      echo "In stage Extract credentials echo VAR : $VAR"
+
       script {
           println "Directly in Groovy:" + VAR_CHARTMUSEUM_USER
       }
-      
+
       sh 'echo "Or in a shell $VAR_CHARTMUSEUM_USER"'
 
       }
@@ -32,4 +33,3 @@ pipeline {
 
   }
 }
-
