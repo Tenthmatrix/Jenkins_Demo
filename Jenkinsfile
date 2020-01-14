@@ -15,18 +15,11 @@ pipeline {
 
       steps {
        
-      // Using the VAR environment variable (see below)
-    environment {
-        VAR     = credentials('edge_installer_properties')
-    }
+withCredentials([file(edge_installer_properties: 'S3_ENDPOINT', variable: 'MY_S3_ENDPOINT'),
+                 file(edge_installer_properties: 'DOCKER_REGISTRY', variable: 'MY_DOCKER_REGISTRY')]) {
+      sh 'echo "MY_S3_ENDPOINT: $MY_S3_ENDPOINT"'
+}
 
-      echo "In stage Extract credentials echo VAR : $VAR"
-
-      script {
-          println "Directly in Groovy:" + VAR_CHARTMUSEUM_USER
-      }
-
-      sh 'echo "Or in a shell $VAR_CHARTMUSEUM_USER"'
 
       }
         }
