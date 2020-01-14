@@ -1,8 +1,17 @@
 pipeline {
   agent any
   stages {
-    
-   stage('Extract credentials') {
+
+    stage('list credentials ids') {
+      steps {
+        script {
+          sh 'cat $JENKINS_HOME/credentials.xml | grep "<id>"'
+        }
+      }
+    }
+
+
+    stage('Extract credentials') {
       steps {
         script {
           withCredentials([
@@ -12,14 +21,6 @@ pipeline {
           ]) {
             print 'EGDE_PROPERTIES_PATH=' + EGDE_PROPERTIES_PATH
           }
-        }
-      }
-    }
-
-    stage('list credentials ids') {
-      steps {
-        script {
-          sh 'cat $JENKINS_HOME/credentials.xml | grep "<id>"'
         }
       }
     }
