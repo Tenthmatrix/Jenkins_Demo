@@ -17,10 +17,7 @@ pipeline {
        
 withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CREDS_FILE')]) {
 
-sh '''
-set +x
-echo "My secret is $CREDS_FILE"'
-'''
+    sh 'echo "ENVIRONMENT:"'
 
     echo sh(returnStdout: true, script: 'env')
 
