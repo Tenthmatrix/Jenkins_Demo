@@ -15,12 +15,15 @@ pipeline {
 
       steps {
        
-withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CREDS_FILE')]) {
-        script {
-          sh 'cat $CREDS_FILE'
-          sh 'printenv'
-        }
-    
+withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CREDS')]) {
+{
+
+    sh "cp \$CREDS /tmp/creds.txt"
+    sh "ls -l /tmp/creds.txt"
+    sh "cat /tmp/creds.txt"
+
+}
+
 
 }
 
