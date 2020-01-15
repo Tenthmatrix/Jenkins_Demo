@@ -15,6 +15,7 @@ pipeline {
       steps {
 withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CREDS')]) {
              script {
+     sh 'set +x'
      sh 'cat $CREDS'
         }
         }
