@@ -11,15 +11,16 @@ pipeline {
     }
 
 
-    stage('Extract credentials') {
+    stage('Extract credentials from file') {
 
       steps {
        
 withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CREDS_FILE')]) {
-
-    sh 'echo "ENVIRONMENT:"'
-
-    echo sh(returnStdout: true, script: 'env')
+        script {
+          sh 'cat $CREDS_FILE'
+          echo sh(returnStdout: true, script: 'env')
+        }
+    
 
 }
 
