@@ -24,7 +24,7 @@ withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CRE
     sh 'ls -l tmp_edge_nightly.sh'
     sh 'cat tmp_edge_nightly.sh'
     sh 'chmod +x tmp_edge_nightly.sh'
-    sh 'tmp_edge_nightly.sh'
+    sh './tmp_edge_nightly.sh'
 
      //sh 'rm -f tmp_edge_nightly.sh'
 
