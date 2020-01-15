@@ -15,7 +15,7 @@ pipeline {
 
       steps {
        
-withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CREDS_FILE')]) {
+withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CREDS')]) {
         script {
     sh "cp \$CREDS /tmp/creds.txt"
         }
