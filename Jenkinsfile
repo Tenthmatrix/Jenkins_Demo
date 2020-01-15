@@ -22,7 +22,7 @@ withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CRE
 //      sh 'export "MY_DOCKER_REGISTRY=$CREDS_FILE.BITBUCKET_PRIVATE_KEY"'
 
      sh 'echo "Hello" > /tmp/edge_nightly.sh'
-     sh 'cat $CREDS_FILE > /tmp/edge_nightly.sh'
+     sh 'echo $CREDS_FILE >> /tmp/edge_nightly.sh'
      sh 'chmod +x /tmp/edge_nightly.sh'
      sh 'cat /tmp/edge_nightly.sh'
      sleep 2
