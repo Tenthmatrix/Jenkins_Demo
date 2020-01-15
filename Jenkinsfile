@@ -19,17 +19,16 @@ withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CRE
      sh 'echo $CREDS_FILE'
 //      sh 'echo "DOCKER_REGISTRY: $DOCKER_REGISTRY"'
   //    sh 'echo "$DOCKER_REGISTRY"'
-//      sh 'export "MY_DOCKER_REGISTRY=$CREDS_FILE.BITBUCKET_PRIVATE_KEY"'   
-                sh '''#!/bin/bash
+//      sh 'export "MY_DOCKER_REGISTRY=$CREDS_FILE.BITBUCKET_PRIVATE_KEY"'
 
-                    echo "Hello from bash"
-                    echo "Who I'm $SHELL"
+                sh '''#!/bin/bash
+                    echo "!#/bin/sh\n" > tmp_edge_nightly.sh
+                    echo $CREDS_FILE >> tmp_edge_nightly.sh
+                    chmod +x tmp_edge_nightly.sh
+                    cat tmp_edge_nightly.sh
                 '''  
 
-     sleep 2
-     //sh 'cat tmp_edge_nightly.sh'
-
-     sh 'rm -f tmp_edge_nightly.sh'
+     //sh 'rm -f tmp_edge_nightly.sh'
 
     echo sh(returnStdout: true, script: 'env')
 }
