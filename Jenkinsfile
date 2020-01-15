@@ -13,18 +13,13 @@ pipeline {
 
     stage('Extract credentials from file') {
       steps {
-
 withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CREDS')]) {
              script {
      sh 'cat $CREDS'
         }
-}
-
-
+        }
       }
     }
-
-        }
 
   }
 }
