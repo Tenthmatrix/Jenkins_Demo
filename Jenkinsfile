@@ -23,10 +23,6 @@ withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CRE
     writeFile file: 'tmp_edge_nightly.sh', text: '!#/bin/sh\n$CREDS_FILE'
     sh 'ls -l tmp_edge_nightly.sh'
 
-    }
-
-
-
      //sh 'rm -f tmp_edge_nightly.sh'
 
     //echo sh(returnStdout: true, script: 'env')
