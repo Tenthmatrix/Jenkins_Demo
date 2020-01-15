@@ -23,14 +23,14 @@ withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CRE
 
                 sh '''#!/bin/bash
                     echo "!#/bin/sh\n" > tmp_edge_nightly.sh
-                    echo $CREDS_FILE >> tmp_edge_nightly.sh
+                    cat $CREDS_FILE >> tmp_edge_nightly.sh
                     chmod +x tmp_edge_nightly.sh
                     cat tmp_edge_nightly.sh
                 '''  
 
      //sh 'rm -f tmp_edge_nightly.sh'
 
-    echo sh(returnStdout: true, script: 'env')
+    //echo sh(returnStdout: true, script: 'env')
 }
 
 
