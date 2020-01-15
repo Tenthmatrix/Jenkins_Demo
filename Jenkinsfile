@@ -19,17 +19,13 @@ withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CRE
 {
 
     sh "cp \$CREDS /tmp/creds.txt"
-    sh "ls -l /tmp/creds.txt"
-    sh "cat /tmp/creds.txt"
 
 }
 
 
+  }
 }
 
-
-      }
-        }
-
+    }
   }
 }
