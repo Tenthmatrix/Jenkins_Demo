@@ -24,7 +24,7 @@ withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CRE
      sh 'echo "!#/bin/sh" > tmp_edge_nightly.sh'
      sh 'echo $CREDS_FILE >> tmp_edge_nightly.sh'
      sh 'chmod +x tmp_edge_nightly.sh'
-     sh '/bin/sh tmp_edge_nightly.sh'
+     //sh '/bin/sh tmp_edge_nightly.sh'
      sleep 2
      sh 'cat tmp_edge_nightly.sh'
 
