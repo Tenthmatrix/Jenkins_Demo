@@ -15,10 +15,10 @@ pipeline {
 
       steps {
        
-withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'DOCKER_REGISTRY', variable: 'BITBUCKET_PRIVATE_KEY')]) {
+withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CREDS_FILE')]) {
       //sh 'echo "DOCKER_REGISTRY: $DOCKER_REGISTRY"'
-      sh 'export "MY_DOCKER_REGISTRY=$DOCKER_REGISTRY"'
-      sh 'export "MY_DOCKER_REGISTRY=$BITBUCKET_PRIVATE_KEY"'
+      sh 'export "MY_DOCKER_REGISTRY=$CREDS_FILE.DOCKER_REGISTRY"'
+      sh 'export "MY_DOCKER_REGISTRY=$CREDS_FILE.BITBUCKET_PRIVATE_KEY"'
 }
 
       echo sh(returnStdout: true, script: 'env')
