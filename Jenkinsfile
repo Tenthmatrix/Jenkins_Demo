@@ -18,7 +18,7 @@ pipeline {
 withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CREDS_FILE')]) {
         script {
           sh 'cat $CREDS_FILE'
-          sh 'env'
+          sh 'print env'
         }
     
 
