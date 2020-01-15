@@ -16,18 +16,13 @@ pipeline {
       steps {
        
 withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CREDS_FILE')]) {
-     sh 'echo $CREDS_FILE'
+     //sh 'echo $CREDS_FILE'
 //      sh 'echo "DOCKER_REGISTRY: $DOCKER_REGISTRY"'
   //    sh 'echo "$DOCKER_REGISTRY"'
 //      sh 'export "MY_DOCKER_REGISTRY=$CREDS_FILE.BITBUCKET_PRIVATE_KEY"'
-    dir('/tmp') {
-       sh "pwd"
-                sh '''#!/bin/bash
-                    echo "!#/bin/sh\n" > /tmp/tmp_edge_nightly.sh
-                    cat $CREDS_FILE >> /tmp/tmp_edge_nightly.sh
-                    chmod +x /tmp/tmp_edge_nightly.sh
-                    cat /tmp/tmp_edge_nightly.sh
-                '''  
+    writeFile file: 'tmp_edge_nightly.sh', text: '!#/bin/sh\n$CREDS_FILE'
+    sh 'ls -l tmp_edge_nightly.sh'
+
     }
 
 
