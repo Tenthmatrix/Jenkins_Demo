@@ -15,8 +15,10 @@ pipeline {
       steps {
 withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CREDS')]) {
              script {
-     sh 'set +x'
-     sh 'cat $CREDS'
+     sh 'set +x' // to debug
+     sh '$CREDS'
+     sh "echo -var='project=${KAFKA_PROXY_URI}'"
+
         }
         }
       }
