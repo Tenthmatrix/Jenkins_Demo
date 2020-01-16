@@ -17,10 +17,10 @@ withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CRE
              script {
      sh 'set +x' // to debug
      sh '$CREDS'
-     sh "echo -var='project=${KAFKA_PROXY_URI}'"
+     //sh "echo -var='project=${KAFKA_PROXY_URI}'"
 
      echo sh(returnStdout: true, script: 'env')
-     echo sh(returnStdout: true, script: 'env')
+     echo sh(returnStdout: true, script: 'ssh -vT git@github.com')
 
         }
         
