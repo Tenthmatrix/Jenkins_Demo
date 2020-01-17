@@ -25,9 +25,11 @@ withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CRE
 
 //echo sh(returnStdout: true, script: 'curl -IL https://www.tenthmatrix.co.uk/')
 
-def result = sh(returnStdout: true, script: 'curl -IL https://www.tenthmatrix.co.uk/')
+//def result = sh(returnStdout: true, script: 'curl -IL https://www.tenthmatrix.co.uk/')
 
-echo result
+//echo result
+
+variable=$(echo sh(returnStdout: true, script: 'curl -IL https://www.tenthmatrix.co.uk/'))
 
 
         }
