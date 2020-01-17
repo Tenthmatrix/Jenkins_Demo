@@ -23,7 +23,12 @@ withCredentials([file(credentialsId: 'edge_installer_properties', variable: 'CRE
 //          echo sh(returnStdout: true, script: 'ssh -vT git@github.com')
 
 
-echo sh(returnStdout: true, script: 'curl -IL https://www.tenthmatrix.co.uk/')
+//echo sh(returnStdout: true, script: 'curl -IL https://www.tenthmatrix.co.uk/')
+
+def result = sh(returnStdout: true, script: 'curl -IL https://www.tenthmatrix.co.uk/')
+
+echo result;
+
 
         }
     
